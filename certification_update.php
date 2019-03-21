@@ -1,0 +1,31 @@
+<?php
+include('sc_config.php');
+if(isset($_POST['submit']))
+{
+
+$ANY_CERTIFICATION_COMPLETED=$_POST['ANY_CERTIFICATION_COMPLETED'];
+$IF_OTHERS_SECIFY=$_POST['IF_OTHERS_SECIFY'];
+$NUMBER_OF_COURSES_COMPLETED=$_POST['NUMBER_OF_COURSES_COMPLETED'];
+$CURRENTLY_PURSUING_CERTIFICATION=$_POST['CURRENTLY_PURSUING_CERTIFICATION'];
+$COURSE_DURATION=$_POST['COURSE_DURATION'];
+$FROM_DATE=$_POST['FROM_DATE'];
+
+$TO_DATE=$_POST['TO_DATE'];
+
+$query=mysqli_query($con,"INSERT INTO
+`certification`(`ANY_CERTIFICATION_COMPLETED`,
+	  `IF_OTHERS_SECIFY`,
+	  `NUMBER_OF_COURSES_COMPLETED`,
+	  `CURRENTLY_PURSUING_CERTIFICATION`,
+	  `COURSE_DURATION`,
+	  `FROM_DATE`,
+	  `TO_DATE`)
+VALUES ('$ANY_CERTIFICATION_COMPLETED','$IF_OTHERS_SECIFY','$NUMBER_OF_COURSES_COMPLETED','$CURRENTLY_PURSUING_CERTIFICATION','$COURSE_DURATION','$FROM_DATE','$TO_DATE')");
+if($query)
+{
+
+echo '<script>window.location="certifications.php";</script>';
+}
+$query=mysqli_query($con,"select * from certification where name='$name'");
+while ($row=mysqli_fetch_array($query));
+?>
